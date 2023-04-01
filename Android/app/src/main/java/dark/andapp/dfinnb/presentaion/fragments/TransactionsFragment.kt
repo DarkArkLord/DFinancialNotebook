@@ -5,15 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
-import dark.andapp.dfinnb.domain.entity.TransactionEntity
 import dark.andapp.dfinnb.presentaion.adapters.TransactionAdapter
+import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
+import dark.andapp.dfinnb.presentaion.extensions.toDomain
+import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsFragmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.onEach
 
-class TransactionsFragment : Fragment() {
+@AndroidEntryPoint
+class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
 
     private var _binding: FragmentTransactionsBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: TransactionsFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,21 +35,23 @@ class TransactionsFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val transactions = mutableListOf<TransactionEntity>()
-        for (i in 0 until 15) {
-            transactions.add(
-                TransactionEntity(
-                    id = i,
-                    name = "Amazon",
-                    amount = i.toDouble()
-                )
+        viewModel.transactions.onEach {
+            binding.recyclerViewTransactions.adapter = TransactionAdapter(
+                transactions = it.map { it.toDomain() }
+            )
+            binding.tvCurrentBalance.text = it.sumOf { it.amount }.toString()
+        }.launchWhenStarted(lifecycleScope)
+
+        binding.ivProfileAvatar.setOnClickListener {
+            viewModel.createTransaction(
+                name = "SomeName",
+                amount = (0..100).random().toDouble() - 50,
             )
         }
-
-        binding.recyclerViewTransactions.adapter = TransactionAdapter(transactions)
 
         binding.ivArrowBack.setOnClickListener {
             val fragment = WelcomeFragment()

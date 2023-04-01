@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import dagger.hilt.android.AndroidEntryPoint
 import dark.andapp.dfinnb.databinding.ActivityMainBinding
 import dark.andapp.dfinnb.presentaion.fragments.WelcomeFragment
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding;
