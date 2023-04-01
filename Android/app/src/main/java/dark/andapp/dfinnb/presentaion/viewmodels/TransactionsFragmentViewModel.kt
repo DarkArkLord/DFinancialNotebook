@@ -13,7 +13,6 @@ import javax.inject.Inject
 class TransactionsFragmentViewModel @Inject constructor (
     private val db: FinanceManagerDatabase
 ) : ViewModel() {
-
     val transactions = db.transactionDao.getAllTransactions()
 
     fun createTransaction(

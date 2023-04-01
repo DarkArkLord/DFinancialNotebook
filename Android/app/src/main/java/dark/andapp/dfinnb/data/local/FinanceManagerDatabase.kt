@@ -14,7 +14,6 @@ import dark.andapp.dfinnb.data.local.entity.TransactionEntity
     version = 1
 )
 abstract class FinanceManagerDatabase : RoomDatabase() {
-
     abstract val transactionDao: TransactionDao
 
     companion object {

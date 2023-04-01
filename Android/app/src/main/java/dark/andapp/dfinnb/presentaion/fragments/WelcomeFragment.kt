@@ -11,7 +11,6 @@ import dark.andapp.dfinnb.databinding.FragmentWelcomeBinding
 
 @AndroidEntryPoint
 class WelcomeFragment : Fragment() {
-
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
 

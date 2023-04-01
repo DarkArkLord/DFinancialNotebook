@@ -20,7 +20,6 @@ import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
-
     private var _binding: FragmentTransactionsBinding? = null
     private val binding get() = _binding!!
 
@@ -34,7 +33,6 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
         _binding = FragmentTransactionsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

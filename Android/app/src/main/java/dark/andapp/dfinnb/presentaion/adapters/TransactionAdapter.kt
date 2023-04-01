@@ -30,16 +30,18 @@ class TransactionAdapter(
                 tvAmount.setTextColor(
                     ContextCompat.getColor(holder.itemView.context, R.color.red)
                 )
-                tvAmount.text = "${transaction.amount} Р"
+                tvAmount.text = transaction.amount.toString()
             } else {
                 tvAmount.setTextColor(
                     ContextCompat.getColor(holder.itemView.context, R.color.green)
                 )
-                tvAmount.text = "+${transaction.amount} Р"
+                tvAmount.text = "+${transaction.amount}"
             }
 
             tvTitle.text = transaction.name
             tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM")
+
+            SomeOtherFields.text = "ID:${transaction.id}, COM:${transaction.comment}"
         }
     }
 
