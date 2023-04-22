@@ -13,7 +13,7 @@ import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
 import dark.andapp.dfinnb.presentaion.adapters.TransactionAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.extensions.toDomain
-import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsFragmentViewModel
+import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.onEach
@@ -23,7 +23,7 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
     private var _binding: FragmentTransactionsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: TransactionsFragmentViewModel by viewModels()
+    private val viewModel: TransactionsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

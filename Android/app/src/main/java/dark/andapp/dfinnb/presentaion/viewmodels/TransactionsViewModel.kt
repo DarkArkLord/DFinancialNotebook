@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TransactionsFragmentViewModel @Inject constructor (
+class TransactionsViewModel @Inject constructor (
     private val db: FinanceManagerDatabase
 ) : ViewModel() {
     val transactions = db.transactionDao.getAllTransactions()
@@ -22,6 +22,7 @@ class TransactionsFragmentViewModel @Inject constructor (
         viewModelScope.launch(Dispatchers.IO) {
             val transaction = TransactionEntity(
                 id = 0,
+                bankId = 0,
                 categoryId = 0,
                 name = name,
                 amount = amount,
