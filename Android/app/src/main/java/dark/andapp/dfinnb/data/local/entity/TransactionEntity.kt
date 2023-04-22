@@ -11,6 +11,11 @@ import androidx.room.PrimaryKey
             parentColumns = ["id"],
             childColumns = ["bankId"]
         ),
+        ForeignKey(
+            entity = CategoryEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["categoryId"]
+        ),
     ]
 )
 data class TransactionEntity(
