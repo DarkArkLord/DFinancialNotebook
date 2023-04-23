@@ -10,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
+import dark.andapp.dfinnb.domain.entity.BankAccountEntity
+import dark.andapp.dfinnb.domain.entity.CategoryEntity
+import dark.andapp.dfinnb.domain.entity.TransactionEntity
 import dark.andapp.dfinnb.presentaion.adapters.TransactionAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.extensions.toDomain
@@ -37,17 +40,23 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.transactions.onEach {
+        viewModel.getAll().onEach {
             binding.recyclerViewTransactions.adapter = TransactionAdapter(
-                transactions = it.map { it.toDomain() }
+                transactions = it
             )
             binding.tvCurrentBalance.text = it.sumOf { it.amount }.toString()
         }.launchWhenStarted(lifecycleScope)
 
         binding.ivProfileAvatar.setOnClickListener {
             viewModel.createTransaction(
-                name = "SomeName",
-                amount = (0..100).random().toDouble() - 50,
+                TransactionEntity(
+                    id = 0,
+                    bank = BankAccountEntity(0, "TestBA"),
+                    category = CategoryEntity(0, "TestC"),
+                    amount = (0..100).random().toDouble() - 50,
+                    createdAt = System.currentTimeMillis(),
+                    comment = "MyComment"
+                )
             )
         }
 

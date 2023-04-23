@@ -23,8 +23,7 @@ data class TransactionEntity(
     var id: Int,
     var bankId: Int,
     var categoryId: Int,
-    var name: String,
-    var comment: String? = null,
     var amount: Double,
     var createdAt: Long,
+    var comment: String? = null,
 )

@@ -24,7 +24,6 @@ class TransactionAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
             val transaction = transactions[position]
-            tvTitle.text = transaction.name
 
             if(transaction.amount < 0) {
                 tvAmount.setTextColor(
@@ -38,7 +37,7 @@ class TransactionAdapter(
                 tvAmount.text = "+${transaction.amount}"
             }
 
-            tvTitle.text = transaction.name
+            tvTitle.text = transaction.comment
             tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM")
 
             SomeOtherFields.text = "ID:${transaction.id}, COM:${transaction.comment}"

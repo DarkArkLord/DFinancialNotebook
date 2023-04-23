@@ -4,31 +4,34 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dark.andapp.dfinnb.data.local.FinanceManagerDatabase
-import dark.andapp.dfinnb.data.local.entity.TransactionEntity
+import dark.andapp.dfinnb.domain.entity.TransactionEntity
+import dark.andapp.dfinnb.presentaion.extensions.toData
+import dark.andapp.dfinnb.presentaion.extensions.toDomain
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TransactionsViewModel @Inject constructor (
+class TransactionsViewModel @Inject constructor(
     private val db: FinanceManagerDatabase
 ) : ViewModel() {
     val transactions = db.transactionDao.getAllTransactions()
+    fun getAll(): Flow<List<TransactionEntity>> {
+        return db.transactionDao.getAllTransactions().map {
+            it.map {
+                val bankAccount = db.bankAccountDao.getById(it.bankId).toDomain()
+                val category = db.categoryDao.getById(it.categoryId).toDomain()
+                it.toDomain(bankAccount, category)
+            }
+        }
+    }
 
-    fun createTransaction(
-        name: String,
-        amount: Double,
-    ) {
+    fun createTransaction(transaction: TransactionEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            val transaction = TransactionEntity(
-                id = 0,
-                bankId = 0,
-                categoryId = 0,
-                name = name,
-                amount = amount,
-                createdAt = System.currentTimeMillis(),
-            )
-            val id = db.transactionDao.insertTransaction(transaction)
+            val entity = transaction.toData();
+            val id = db.transactionDao.insertTransaction(entity)
         }
     }
 }
