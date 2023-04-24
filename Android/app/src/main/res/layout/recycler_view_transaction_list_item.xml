@@ -20,8 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEndt_toStartOf="@+id/tvBank"
-        app:flow_horizontalBias="0" />
+        app:layout_constraintEnd_toStartOf="@+id/tvBank" />
 
     <TextView
         android:id="@+id/tvBank"
@@ -37,8 +36,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvId"
-        app:layout_constraintEndt_toStartOf="@+id/tvAmount"
-        app:flow_horizontalBias="0.5" />
+        app:layout_constraintEnd_toStartOf="@+id/tvAmount" />
 
     <TextView
         android:id="@+id/tvAmount"
@@ -54,8 +52,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvBank"
-        app:layout_constraintEnd_toStartOf="@+id/tvCategory"
-        app:flow_horizontalBias="0.5" />
+        app:layout_constraintEnd_toStartOf="@+id/tvCategory" />
 
     <TextView
         android:id="@+id/tvCategory"
@@ -71,8 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvAmount"
-        app:layout_constraintEnd_toStartOf="@+id/tvDate"
-        app:flow_horizontalBias="0.5" />
+        app:layout_constraintEnd_toStartOf="@+id/tvDate" />
 
     <TextView
         android:id="@+id/tvDate"
@@ -88,8 +84,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvCategory"
-        app:layout_constraintEnd_toStartOf="@+id/tvComment"
-        app:flow_horizontalBias="0.5" />
+        app:layout_constraintEnd_toStartOf="@+id/tvComment" />
 
     <TextView
         android:id="@+id/tvComment"
@@ -101,7 +96,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:flow_horizontalBias="1" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
