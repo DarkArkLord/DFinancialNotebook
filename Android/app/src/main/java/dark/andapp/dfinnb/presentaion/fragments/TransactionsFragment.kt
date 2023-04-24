@@ -10,12 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
-import dark.andapp.dfinnb.domain.entity.BankAccountEntity
-import dark.andapp.dfinnb.domain.entity.CategoryEntity
+import dark.andapp.dfinnb.domain.entity.NamedEntity
 import dark.andapp.dfinnb.domain.entity.TransactionEntity
 import dark.andapp.dfinnb.presentaion.adapters.TransactionAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
-import dark.andapp.dfinnb.presentaion.extensions.toDomain
 import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -51,8 +49,8 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             viewModel.createTransaction(
                 TransactionEntity(
                     id = 0,
-                    bank = BankAccountEntity(0, "TestBA"),
-                    category = CategoryEntity(0, "TestC"),
+                    bank = NamedEntity(0, "TestBA"),
+                    category = NamedEntity(0, "TestC"),
                     amount = (0..100).random().toDouble() - 50,
                     createdAt = System.currentTimeMillis(),
                     comment = "MyComment"

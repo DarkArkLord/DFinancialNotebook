@@ -1,6 +1,6 @@
 package dark.andapp.dfinnb.domain.entity
 
-data class CategoryEntity(
+data class NamedEntity(
     var id: Int,
     var name: String,
 )
