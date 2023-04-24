@@ -14,10 +14,15 @@ class TransactionAdapter(
     private val transactions: List<TransactionEntity>
 ) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: RecyclerViewTransactionListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: RecyclerViewTransactionListItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RecyclerViewTransactionListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = RecyclerViewTransactionListItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 
@@ -25,7 +30,10 @@ class TransactionAdapter(
         with(holder.binding) {
             val transaction = transactions[position]
 
-            if(transaction.amount < 0) {
+            tvId.text = transaction.id.toString()
+            tvBank.text = transaction.bank.name
+
+            if (transaction.amount < 0) {
                 tvAmount.setTextColor(
                     ContextCompat.getColor(holder.itemView.context, R.color.red)
                 )
@@ -37,10 +45,9 @@ class TransactionAdapter(
                 tvAmount.text = "+${transaction.amount}"
             }
 
-            tvTitle.text = transaction.comment
-            tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM")
-
-            SomeOtherFields.text = "ID:${transaction.id}, COM:${transaction.comment}"
+            tvCategory.text = transaction.category.name
+            tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM yyyy")
+            tvComment.text = transaction.comment
         }
     }
 
