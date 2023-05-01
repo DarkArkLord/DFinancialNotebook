@@ -6,19 +6,19 @@ import dark.andapp.dfinnb.data.local.entity.CategoryEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface CategoryDao {
+interface CategoryDao : INamedEntityDao<CategoryEntity> {
     @Query("SELECT * FROM CategoryEntity")
-    fun getAll(): Flow<List<CategoryEntity>>
+    override fun getAll(): Flow<List<CategoryEntity>>
 
     @Query("SELECT * FROM CategoryEntity WHERE id = :id")
-    fun getById(id: Int): CategoryEntity
+    override fun getById(id: Int): CategoryEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(entity: CategoryEntity): Int
+    override suspend fun insert(entity: CategoryEntity)
 
     @Update
-    suspend fun update(entity: CategoryEntity)
+    override suspend fun update(entity: CategoryEntity)
 
     @Delete
-    suspend fun delete(entity: CategoryEntity)
+    override suspend fun delete(entity: CategoryEntity)
 }
