@@ -10,8 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
-import dark.andapp.dfinnb.domain.entity.NamedEntity
-import dark.andapp.dfinnb.domain.entity.TransactionEntity
 import dark.andapp.dfinnb.presentaion.adapters.TransactionAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsViewModel
@@ -45,18 +43,29 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             binding.tvCurrentBalance.text = it.sumOf { it.amount }.toString()
         }.launchWhenStarted(lifecycleScope)
 
-        binding.ivProfileAvatar.setOnClickListener {
-            viewModel.createTransaction(
-                TransactionEntity(
-                    id = 0,
-                    bank = NamedEntity(0, "TestBA"),
-                    category = NamedEntity(0, "TestC"),
-                    amount = (0..100).random().toDouble() - 50,
-                    createdAt = System.currentTimeMillis(),
-                    comment = "MyComment"
-                )
-            )
+        binding.cvBank.setOnClickListener {
+            val fragment = BankAccountFragment()
+            parentFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_view, fragment)
+                .commit()
         }
+
+        binding.cvCategory.setOnClickListener {
+            val fragment = CategoryFragment()
+            parentFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_view, fragment)
+                .commit()
+        }
+
+//        binding.cvAdd.setOnClickListener {
+//            val fragment = AddTransaction()
+//            parentFragmentManager
+//                .beginTransaction()
+//                .add(R.id.fragment_container_view, fragment)
+//                .commit()
+//        }
 
         binding.ivArrowBack.setOnClickListener {
             val fragment = WelcomeFragment()

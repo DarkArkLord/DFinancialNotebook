@@ -3,4 +3,7 @@
     <string name="welcome_screen_title_old">Simple way to\nhelp control your\nSavings</string>
     <string name="welcome_screen_title">Сейчас будем\nсчитать деньги</string>
     <string name="current_balance_title">Current Balance</string>
+    <string name="banks_button">Banks</string>
+    <string name="categories_button">Categories</string>
+    <string name="add_button">Add</string>
 </resources>
