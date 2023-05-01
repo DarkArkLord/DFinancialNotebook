@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import dark.andapp.dfinnb.data.local.entity.INamedEntity
-import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
+import dark.andapp.dfinnb.databinding.FragmentNamedBinding
 import dark.andapp.dfinnb.presentaion.adapters.NamedAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.viewmodels.BaseNamedViewModel
@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.onEach
 
 abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
     CoroutineScope by MainScope() {
-    private var _binding: FragmentTransactionsBinding? = null
+    private var _binding: FragmentNamedBinding? = null
     private val binding get() = _binding!!
 
     protected abstract fun getViewModel(): BaseNamedViewModel<TData>
@@ -27,7 +27,7 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTransactionsBinding.inflate(inflater, container, false)
+        _binding = FragmentNamedBinding.inflate(inflater, container, false)
         return binding.root
     }
 
