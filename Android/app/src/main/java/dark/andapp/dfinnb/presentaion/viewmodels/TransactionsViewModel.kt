@@ -18,7 +18,7 @@ class TransactionsViewModel @Inject constructor(
     private val db: FinanceManagerDatabase
 ) : ViewModel() {
     fun getAll(): Flow<List<TransactionEntity>> {
-        return db.transactionDao.getAllTransactions().map {
+        return db.transactionDao.getAll().map {
             it.map {
                 val bankAccount = db.bankAccountDao.getById(it.bankId).toDomain()
                 val category = db.categoryDao.getById(it.categoryId).toDomain()
@@ -30,7 +30,7 @@ class TransactionsViewModel @Inject constructor(
     fun createTransaction(entity: TransactionEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             val entityData = entity.toData();
-            val id = db.transactionDao.insertTransaction(entityData)
+            val id = db.transactionDao.insert(entityData)
         }
     }
 }
