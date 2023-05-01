@@ -2,8 +2,6 @@ package dark.andapp.dfinnb.presentaion.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dark.andapp.dfinnb.data.local.FinanceManagerDatabase
 import dark.andapp.dfinnb.data.local.dao.INamedEntityDao
 import dark.andapp.dfinnb.data.local.entity.INamedEntity
 import dark.andapp.dfinnb.domain.entity.NamedEntity
@@ -11,14 +9,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-abstract class BaseNamedViewModel<DataT : INamedEntity> @Inject constructor(
-    private val db: FinanceManagerDatabase
-) : ViewModel() {
+abstract class BaseNamedViewModel<DataT : INamedEntity> : ViewModel() {
     protected abstract fun getDao(): INamedEntityDao<DataT>
-    protected abstract fun mapToDomain(entity: DataT): NamedEntity
+    protected abstract fun mapToDomain(dataEntity: DataT): NamedEntity
     protected abstract fun mapToData(entity: NamedEntity): DataT
 
     fun getAll(): Flow<List<NamedEntity>> {

@@ -2,35 +2,13 @@ package dark.andapp.dfinnb.presentaion.extensions
 
 import dark.andapp.dfinnb.domain.entity.NamedEntity
 
-typealias DataBA = dark.andapp.dfinnb.data.local.entity.BankAccountEntity
-typealias DataC = dark.andapp.dfinnb.data.local.entity.CategoryEntity
+typealias DataN = dark.andapp.dfinnb.data.local.entity.INamedEntity
 typealias DataT = dark.andapp.dfinnb.data.local.entity.TransactionEntity
 
 typealias DomainT = dark.andapp.dfinnb.domain.entity.TransactionEntity
 
-fun DataBA.toDomain(): NamedEntity {
+fun DataN.toDomain(): NamedEntity {
     return NamedEntity(
-        id = this.id,
-        name = this.name,
-    )
-}
-
-fun NamedEntity.toDataBA(): DataBA {
-    return DataBA(
-        id = this.id,
-        name = this.name,
-    )
-}
-
-fun DataC.toDomain(): NamedEntity {
-    return NamedEntity(
-        id = this.id,
-        name = this.name,
-    )
-}
-
-fun NamedEntity.toDataC(): DataC {
-    return DataC(
         id = this.id,
         name = this.name,
     )
