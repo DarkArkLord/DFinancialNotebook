@@ -18,9 +18,13 @@ abstract class CategoryViewModel @Inject constructor(
     }
 
     override fun mapToDomain(dataEntity: DataC): NamedEntity {
-        val entiry = dataEntity.toDomain()
-        // add some fields
-        return entiry
+        val entity = dataEntity.toDomain()
+
+        val transactions = db.transactionDao.getByCategory(entity.id)
+        entity.count = transactions.size
+        entity.amount = transactions.sumOf { it.amount }
+
+        return entity
     }
 
     override fun mapToData(entity: NamedEntity): DataC {

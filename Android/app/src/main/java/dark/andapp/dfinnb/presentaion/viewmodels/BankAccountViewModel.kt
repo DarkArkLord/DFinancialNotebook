@@ -18,9 +18,13 @@ abstract class BankAccountViewModel @Inject constructor(
     }
 
     override fun mapToDomain(dataEntity: DataBA): NamedEntity {
-        val entiry = dataEntity.toDomain()
-        // add some fields
-        return entiry
+        val entity = dataEntity.toDomain()
+
+        val transactions = db.transactionDao.getByBank(entity.id)
+        entity.count = transactions.size
+        entity.amount = transactions.sumOf { it.amount }
+
+        return entity
     }
 
     override fun mapToData(entity: NamedEntity): DataBA {
