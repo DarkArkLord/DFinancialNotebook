@@ -10,7 +10,7 @@ import javax.inject.Inject
 typealias DataBA = dark.andapp.dfinnb.data.local.entity.BankAccountEntity
 
 @HiltViewModel
-abstract class BankAccountViewModel @Inject constructor(
+class BankAccountViewModel @Inject constructor(
     private val db: FinanceManagerDatabase
 ) : BaseNamedViewModel<DataBA>() {
     override fun getDao(): INamedEntityDao<DataBA> {
