@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">173</string>
-    <string name="welcome_screen_title">Simple way to\nhelp control your\nSavings</string>
+    <string name="app_name">DFinancialNotebook</string>
+    <string name="welcome_screen_title_old">Simple way to\nhelp control your\nSavings</string>
+    <string name="welcome_screen_title">Сейчас будем\nсчитать деньги</string>
     <string name="current_balance_title">Current Balance</string>
 </resources>
