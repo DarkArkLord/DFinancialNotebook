@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class CategoryEntity (
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
-    var name: String,
-)
+    override var id: Int,
+    override var name: String,
+) : INamedEntity(id, name)
