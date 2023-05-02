@@ -42,12 +42,12 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
         }.launchWhenStarted(lifecycleScope)
 
         binding.cvAdd.setOnClickListener {
-            val name = binding.etEntityName.toString()
+            val name = binding.etEntityName.text.toString()
             if (name.isNotEmpty()) {
                 getViewModel().create(
                     NamedEntity(
                         id = 0,
-                        name = binding.etEntityName.toString(),
+                        name = name,
                     )
                 )
             }
