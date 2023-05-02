@@ -39,6 +39,6 @@ abstract class FinanceManagerDatabase : RoomDatabase() {
             context,
             FinanceManagerDatabase::class.java,
             DATABASE_NAME
-        ).build()
+        ).allowMainThreadQueries().build()
     }
 }

@@ -5,6 +5,7 @@ import dark.andapp.dfinnb.data.local.FinanceManagerDatabase
 import dark.andapp.dfinnb.data.local.dao.INamedEntityDao
 import dark.andapp.dfinnb.domain.entity.NamedEntity
 import dark.andapp.dfinnb.presentaion.extensions.toDomain
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 typealias DataBA = dark.andapp.dfinnb.data.local.entity.BankAccountEntity
@@ -20,9 +21,15 @@ class BankAccountViewModel @Inject constructor(
     override fun mapToDomain(dataEntity: DataBA): NamedEntity {
         val entity = dataEntity.toDomain()
 
-        val transactions = db.transactionDao.getByBank(entity.id)
-        entity.count = transactions.size
-        entity.amount = transactions.sumOf { it.amount }
+//        runBlocking {
+//            Thread {
+//                val transactions = db.transactionDao.getByBank(entity.id)
+//                if (transactions != null) {
+//                    entity.count = transactions.size
+//                    entity.amount = transactions.sumOf { it.amount }
+//                }
+//            }.start()
+//        }
 
         return entity
     }

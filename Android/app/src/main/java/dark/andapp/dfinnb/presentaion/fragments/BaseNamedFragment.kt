@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import dark.andapp.dfinnb.data.local.entity.INamedEntity
 import dark.andapp.dfinnb.databinding.FragmentNamedBinding
+import dark.andapp.dfinnb.domain.entity.NamedEntity
 import dark.andapp.dfinnb.presentaion.adapters.NamedAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.viewmodels.BaseNamedViewModel
@@ -38,27 +39,24 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
             binding.recyclerViewTransactions.adapter = NamedAdapter(
                 entities = it
             )
-            binding.tvCurrentBalance.text = it.sumOf { it.amount }.toString()
         }.launchWhenStarted(lifecycleScope)
 
-//        binding.ivProfileAvatar.setOnClickListener {
-//            getViewModel().createTransaction(
-//                TransactionEntity(
-//                    id = 0,
-//                    bank = NamedEntity(0, "TestBA"),
-//                    category = NamedEntity(0, "TestC"),
-//                    amount = (0..100).random().toDouble() - 50,
-//                    createdAt = System.currentTimeMillis(),
-//                    comment = "MyComment"
-//                )
-//            )
-//        }
+        binding.cvAdd.setOnClickListener {
+            val name = binding.etEntityName.toString()
+            if (name.isNotEmpty()) {
+                getViewModel().create(
+                    NamedEntity(
+                        id = 0,
+                        name = binding.etEntityName.toString(),
+                    )
+                )
+            }
+        }
 
         binding.ivArrowBack.setOnClickListener {
             parentFragmentManager
                 .beginTransaction()
                 .remove(this)
-//                .replace(R.id.fragment_container_view, fragment)
                 .commit()
         }
     }
