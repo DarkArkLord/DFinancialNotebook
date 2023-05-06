@@ -37,11 +37,15 @@ class TransactionAdapter(
                 tvAmount.setTextColor(
                     ContextCompat.getColor(holder.itemView.context, R.color.red)
                 )
-                tvAmount.text = transaction.amount.toString()
             } else {
                 tvAmount.setTextColor(
                     ContextCompat.getColor(holder.itemView.context, R.color.green)
                 )
+            }
+
+            if (transaction.amount <= 0) {
+                tvAmount.text = transaction.amount.toString()
+            } else {
                 tvAmount.text = "+${transaction.amount}"
             }
 

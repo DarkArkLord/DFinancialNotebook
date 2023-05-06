@@ -41,11 +41,15 @@ class NamedAdapter(
             textView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.red)
             )
-            textView.text = value.toString()
         } else {
             textView.setTextColor(
                 ContextCompat.getColor(holder.itemView.context, R.color.green)
             )
+        }
+
+        if (value.toDouble() <= 0) {
+            textView.text = value.toString()
+        } else {
             textView.text = "+${value}"
         }
     }
