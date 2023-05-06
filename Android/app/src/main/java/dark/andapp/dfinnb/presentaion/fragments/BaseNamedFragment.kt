@@ -16,7 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.onEach
 
-abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
+abstract class BaseNamedFragment<TData : INamedEntity>(
+    private val header: String
+) : Fragment(),
     CoroutineScope by MainScope() {
     private var _binding: FragmentNamedBinding? = null
     private val binding get() = _binding!!
@@ -34,6 +36,8 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.tvHeaderText.text = header
 
         getViewModel().getAll().onEach {
             binding.recyclerViewTransactions.adapter = NamedAdapter(
