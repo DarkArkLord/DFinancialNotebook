@@ -1,7 +1,8 @@
 package dark.andapp.dfinnb.presentaion.fragments
 
 import android.app.AlertDialog
-import android.content.DialogInterface
+import android.app.DatePickerDialog
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dark.andapp.dfinnb.databinding.FragmentCreateTransactionBinding
 import dark.andapp.dfinnb.domain.entity.NullableTransactionEntity
+import dark.andapp.dfinnb.presentaion.extensions.dateToString
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.extensions.toDomain
 import dark.andapp.dfinnb.presentaion.viewmodels.BankAccountViewModel
@@ -94,6 +96,24 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             }
         }.launchWhenStarted(lifecycleScope)
 
+        binding.cvCreatingDate.setOnClickListener {
+            val todayCalendar = Calendar.getInstance()
+            DatePickerDialog(
+                context,
+                { _, year, month, day ->
+                    val calendar = Calendar.getInstance()
+                    calendar.set(Calendar.YEAR, year)
+                    calendar.set(Calendar.MONTH, month)
+                    calendar.set(Calendar.DAY_OF_MONTH, day)
+                    newTransaction.createdAt = calendar.time.time
+                    binding.tvCreatingDate.text = calendar.time.dateToString("dd MMMM yyyy")
+                },
+                todayCalendar.get(Calendar.YEAR),
+                todayCalendar.get(Calendar.MONTH),
+                todayCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
         binding.cvAdd.setOnClickListener {
             var canCreate = true
 
@@ -107,9 +127,11 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
                 canCreate = false
             }
 
-            if (newTransaction.amount == null) {
+            if (binding.etAmount.text.isEmpty()) {
                 createDialog("Amount must be entered")
                 canCreate = false
+            } else {
+                newTransaction.amount = binding.etAmount.text.toString().toDouble()
             }
 
             if (newTransaction.createdAt == null) {
@@ -118,7 +140,12 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             }
 
             if (canCreate) {
-                transactionsViewModel.createTransaction(newTransaction.toDomain())
+                newTransaction.comment = binding.etComment.text.toString()
+
+                val domainTransaction = newTransaction.toDomain()
+                createDialog(domainTransaction.toString())
+
+                transactionsViewModel.createTransaction(domainTransaction)
 
                 parentFragmentManager
                     .beginTransaction()
