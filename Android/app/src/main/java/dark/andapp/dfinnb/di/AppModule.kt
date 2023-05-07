@@ -19,6 +19,6 @@ class AppModule {
             app,
             FinanceManagerDatabase::class.java,
             FinanceManagerDatabase.DATABASE_NAME,
-        ).build()
+        ).allowMainThreadQueries().build()
     }
 }
