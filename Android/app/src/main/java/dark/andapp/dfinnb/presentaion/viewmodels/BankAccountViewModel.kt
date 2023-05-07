@@ -21,14 +21,11 @@ class BankAccountViewModel @Inject constructor(
     override fun mapToDomain(dataEntity: DataBA): NamedEntity {
         val entity = dataEntity.toDomain()
 
-        runBlocking {
-            Thread {
-                val transactions = db.transactionDao.getByBank(entity.id)
-                if (transactions != null) {
-                    entity.count = transactions.size
-                    entity.amount = transactions.sumOf { it.amount }
-                }
-            }.start()
+
+        val transactions = db.transactionDao.getByBank(entity.id)
+        if (transactions != null) {
+            entity.count = transactions.size
+            entity.amount = transactions.sumOf { it.amount }
         }
 
         return entity

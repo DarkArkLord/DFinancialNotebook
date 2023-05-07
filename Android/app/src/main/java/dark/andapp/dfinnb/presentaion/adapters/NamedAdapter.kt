@@ -31,7 +31,7 @@ class NamedAdapter(
 
             tvId.text = entity.id.toString()
             tvName.text = entity.name
-            setTextWithColor(tvCount, entity.count, holder)
+            tvCount.text = entity.count.toString()
             setTextWithColor(tvAmount, entity.amount, holder)
         }
     }
