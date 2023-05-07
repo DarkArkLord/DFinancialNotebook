@@ -6,4 +6,10 @@
     <string name="banks_button">Banks</string>
     <string name="categories_button">Categories</string>
     <string name="add_button">Add</string>
+    <string name="add_transaction_header">Add transaction</string>
+    <string name="add_transaction_bank">Bank</string>
+    <string name="add_transaction_category">Category</string>
+    <string name="add_transaction_amount">Amount</string>
+    <string name="add_transaction_creating_date">Creating date</string>
+    <string name="add_transaction_comment">Comment</string>
 </resources>

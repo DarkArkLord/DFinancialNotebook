@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/welcome_screen_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivArrowBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/arrow_right"
+        android:rotation="180"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"/>
+
+    <TextView
+        android:id="@+id/tvHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:textSize="14sp"
+        android:text="@string/add_transaction_header"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cvBankHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/add_transaction_bank"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cvBank"
+        app:layout_constraintTop_toTopOf="@+id/cvBank"
+        app:layout_constraintBottom_toBottomOf="@+id/cvBank" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:shape="ring"
+        app:layout_constraintStart_toEndOf="@+id/cvBankHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivArrowBack"
+        app:layout_constraintBottom_toTopOf="@+id/cvCategory"
+        app:cardCornerRadius="40dp">
+
+        <EditText
+            android:id="@+id/etBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            app:layout_constraintStart_toEndOf="@+id/cvBankHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/cvCategoryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/add_transaction_category"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cvCategory"
+        app:layout_constraintTop_toTopOf="@+id/cvCategory"
+        app:layout_constraintBottom_toBottomOf="@+id/cvCategory" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:shape="ring"
+        app:layout_constraintStart_toEndOf="@+id/cvCategoryHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvBank"
+        app:layout_constraintBottom_toTopOf="@+id/cvAmount"
+        app:cardCornerRadius="40dp">
+
+        <EditText
+            android:id="@+id/etCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/cvAmountHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/add_transaction_amount"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cvAmount"
+        app:layout_constraintTop_toTopOf="@+id/cvAmount"
+        app:layout_constraintBottom_toBottomOf="@+id/cvAmount" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:shape="ring"
+        app:layout_constraintStart_toEndOf="@+id/cvAmountHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvCategory"
+        app:layout_constraintBottom_toTopOf="@+id/cvCreatingDate"
+        app:cardCornerRadius="40dp">
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/cvCreatingDateHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/add_transaction_creating_date"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cvCreatingDate"
+        app:layout_constraintTop_toTopOf="@+id/cvCreatingDate"
+        app:layout_constraintBottom_toBottomOf="@+id/cvCreatingDate" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCreatingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:shape="ring"
+        app:layout_constraintStart_toEndOf="@+id/cvCreatingDateHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvAmount"
+        app:layout_constraintBottom_toTopOf="@+id/cvComment"
+        app:cardCornerRadius="40dp">
+
+        <EditText
+            android:id="@+id/etCreatingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/cvCommentHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/add_transaction_comment"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cvComment"
+        app:layout_constraintTop_toTopOf="@+id/cvComment"
+        app:layout_constraintBottom_toBottomOf="@+id/cvComment" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:shape="ring"
+        app:layout_constraintStart_toEndOf="@+id/cvCommentHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvCreatingDate"
+        app:layout_constraintBottom_toTopOf="@+id/cvAdd"
+        app:cardCornerRadius="40dp">
+
+        <EditText
+            android:id="@+id/etComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAdd"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        android:shape="ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="40dp">
+
+        <ImageView
+            android:id="@+id/cvAddImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle_gradient_shape" />
+
+        <TextView
+            android:id="@+id/cvAddText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:text="@string/add_button"
+            android:textColor="@color/gray" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
