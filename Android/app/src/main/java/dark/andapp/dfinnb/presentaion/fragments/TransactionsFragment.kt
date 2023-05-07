@@ -59,13 +59,13 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
                 .commit()
         }
 
-//        binding.cvAdd.setOnClickListener {
-//            val fragment = AddTransaction()
-//            parentFragmentManager
-//                .beginTransaction()
-//                .add(R.id.fragment_container_view, fragment)
-//                .commit()
-//        }
+        binding.cvAdd.setOnClickListener {
+            val fragment = CreateTransactionsFragment()
+            parentFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_view, fragment)
+                .commit()
+        }
 
         binding.ivArrowBack.setOnClickListener {
             val fragment = WelcomeFragment()
