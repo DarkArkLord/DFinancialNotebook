@@ -9,7 +9,6 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,7 +17,8 @@
             android:id="@+id/ivArrowBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/back_button_start_margin"
+            android:layout_marginTop="@dimen/back_button_top_margin"
             android:background="@drawable/arrow_right"
             android:rotation="180"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/add_transaction_header"
             android:textColor="@color/gray"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_header"
             app:layout_constraintBottom_toBottomOf="@+id/ivArrowBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/cvAdd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,9 +55,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="20dp"
-            android:hint="@string/add_transaction_bank">
+            android:layout_marginHorizontal="@dimen/add_transaction_input_horizontal_margin"
+            android:layout_weight="1"
+            android:hint="@string/bank">
 
             <AutoCompleteTextView
                 android:id="@+id/etBank"
@@ -72,9 +72,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="20dp"
-            android:hint="@string/add_transaction_category">
+            android:layout_marginHorizontal="@dimen/add_transaction_input_horizontal_margin"
+            android:layout_weight="1"
+            android:hint="@string/category">
 
             <AutoCompleteTextView
                 android:id="@+id/etCategory"
@@ -88,9 +88,9 @@
             android:id="@+id/etAmountView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="20dp"
-            android:hint="@string/add_transaction_amount">
+            android:layout_marginHorizontal="@dimen/add_transaction_input_horizontal_margin"
+            android:layout_weight="1"
+            android:hint="@string/amount">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAmount"
@@ -104,11 +104,11 @@
             android:id="@+id/etCreatingDateView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="@dimen/add_transaction_input_horizontal_margin"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:hint="@string/add_transaction_creating_date">
+            android:hint="@string/creating_date">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCreatingDate"
@@ -122,9 +122,9 @@
             android:id="@+id/etCommentView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="20dp"
-            android:hint="@string/add_transaction_comment">
+            android:layout_marginHorizontal="@dimen/add_transaction_input_horizontal_margin"
+            android:layout_weight="1"
+            android:hint="@string/comment">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etComment"
@@ -140,8 +140,8 @@
         android:id="@+id/cvAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginHorizontal="@dimen/add_transaction_input_horizontal_margin"
+        android:layout_marginBottom="@dimen/main_bottom_margin"
         android:shape="ring"
         app:cardBackgroundColor="@color/dark_gray"
         app:cardCornerRadius="40dp"
@@ -154,9 +154,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:text="@string/add_button"
+            android:text="@string/add"
             android:textColor="@color/yellow"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_size_button" />
 
     </androidx.cardview.widget.CardView>
 

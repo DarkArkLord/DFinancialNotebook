@@ -13,7 +13,7 @@
         android:layout_marginStart="10dp"
         android:text="id"
         android:textColor="@color/gray"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -39,9 +39,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Bank"
+            android:text="@string/bank"
             android:textColor="@color/yellow"
-            android:textSize="14sp" />
+            android:textSize="@dimen/text_size_main" />
 
         <TextView
             android:id="@+id/tvCategory"
@@ -51,9 +51,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Category"
+            android:text="@string/category"
             android:textColor="@color/yellow"
-            android:textSize="14sp" />
+            android:textSize="@dimen/text_size_main" />
 
     </LinearLayout>
 
@@ -61,9 +61,9 @@
         android:id="@+id/tvComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comment"
+        android:text="@string/comment"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/llColumn2"
         app:layout_constraintStart_toEndOf="@+id/llColumn1"
@@ -88,8 +88,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="+350"
-            android:textSize="14sp" />
+            android:text="@string/amount"
+            android:textSize="@dimen/text_size_main" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -99,9 +99,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Sep 3, 2013"
+            android:text="@string/creating_date"
             android:textColor="@color/yellow"
-            android:textSize="14sp" />
+            android:textSize="@dimen/text_size_main" />
 
     </LinearLayout>
 

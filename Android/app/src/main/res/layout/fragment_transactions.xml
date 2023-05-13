@@ -9,8 +9,8 @@
         android:id="@+id/ivArrowBack"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/back_button_start_margin"
+        android:layout_marginTop="@dimen/back_button_top_margin"
         android:background="@drawable/arrow_right"
         android:rotation="180"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/current_balance_title"
         android:textColor="@color/yellow"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_header"
         app:layout_constraintBottom_toBottomOf="@+id/ivArrowBack"
         app:layout_constraintEnd_toStartOf="@+id/tvCurrentBalance"
         app:layout_constraintStart_toEndOf="@+id/ivArrowBack"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="123"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_header"
         app:layout_constraintBottom_toBottomOf="@+id/tvCurrentBalanceTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvCurrentBalanceTitle"
@@ -56,8 +56,10 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBank"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_margin="@dimen/dimen_4"
+            android:layout_weight="1"
             app:cardBackgroundColor="@color/dark_gray"
             app:cardCornerRadius="100dp">
 
@@ -66,17 +68,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/banks_button"
+                android:text="@string/banks"
                 android:textColor="@color/yellow"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_size_button" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvCategory"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="30dp"
+            android:layout_margin="@dimen/dimen_4"
+            android:layout_weight="1"
             app:cardBackgroundColor="@color/dark_gray"
             app:cardCornerRadius="100dp">
 
@@ -85,16 +88,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/categories_button"
+                android:text="@string/categories"
                 android:textColor="@color/yellow"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_size_button" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvAdd"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_margin="@dimen/dimen_4"
+            android:layout_weight="1"
             app:cardBackgroundColor="@color/dark_gray"
             app:cardCornerRadius="100dp">
 
@@ -103,9 +108,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/add_button"
+                android:text="@string/add"
                 android:textColor="@color/yellow"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_size_button" />
 
         </androidx.cardview.widget.CardView>
 
@@ -138,7 +143,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/main_bottom_margin">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewTransactions"

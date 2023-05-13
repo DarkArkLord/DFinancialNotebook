@@ -1,15 +1,22 @@
 <resources>
     <string name="app_name">DFinancialNotebook</string>
-    <string name="welcome_screen_title_old">Simple way to\nhelp control your\nSavings</string>
     <string name="welcome_screen_title">Сейчас будем\nсчитать деньги</string>
-    <string name="current_balance_title">Current Balance</string>
-    <string name="banks_button">Banks</string>
-    <string name="categories_button">Categories</string>
-    <string name="add_button">Add</string>
-    <string name="add_transaction_header">Add transaction</string>
-    <string name="add_transaction_bank">Bank</string>
-    <string name="add_transaction_category">Category</string>
-    <string name="add_transaction_amount">Amount</string>
-    <string name="add_transaction_creating_date">Creating date</string>
-    <string name="add_transaction_comment">Comment</string>
+
+    <string name="current_balance_title">Баланс</string>
+
+    <string name="banks">Банки</string>
+    <string name="bank">Банк</string>
+
+    <string name="categories">Категории</string>
+    <string name="category">Категория</string>
+
+    <string name="amount">Сумма</string>
+
+    <string name="creating_date">Дата создания</string>
+
+    <string name="comment">Комментарий</string>
+
+    <string name="add">Добавить</string>
+
+    <string name="add_transaction_header">Добавление транзакции</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_main">14sp</dimen>
+    <dimen name="text_size_button">18sp</dimen>
+    <dimen name="text_size_header">24sp</dimen>
+
+    <dimen name="add_transaction_input_horizontal_margin">16dp</dimen>
+    <dimen name="main_bottom_margin">60dp</dimen>
+
+    <dimen name="back_button_top_margin">50dp</dimen>
+    <dimen name="back_button_start_margin">30dp</dimen>
+
+    <dimen name="dimen_4">4dp</dimen>
+</resources>
