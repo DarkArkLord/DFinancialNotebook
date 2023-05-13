@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.data.local.entity.INamedEntity
 import dark.andapp.dfinnb.databinding.FragmentNamedBinding
 import dark.andapp.dfinnb.domain.entity.NamedEntity
 import dark.andapp.dfinnb.presentaion.adapters.NamedAdapter
+import dark.andapp.dfinnb.presentaion.extensions.createInfoDialog
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.viewmodels.BaseNamedViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -45,6 +47,7 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
         }.launchWhenStarted(lifecycleScope)
 
         binding.cvAdd.setOnClickListener {
+            binding.etEntityNameView.error = null
             val name = binding.etEntityName.text.toString()
             if (name.isNotEmpty()) {
                 getViewModel().create(
@@ -53,6 +56,8 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
                         name = name,
                     )
                 )
+            } else {
+                binding.etEntityNameView.error = getString(R.string.error_name)
             }
         }
 

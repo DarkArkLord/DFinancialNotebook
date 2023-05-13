@@ -4,6 +4,8 @@
 
     <string name="current_balance_title">Баланс</string>
 
+    <string name="name">Название</string>
+
     <string name="banks">Банки</string>
     <string name="bank">Банк</string>
 
@@ -19,4 +21,12 @@
     <string name="add">Добавить</string>
 
     <string name="add_transaction_header">Добавление транзакции</string>
+
+    <string name="ok">OK</string>
+
+    <string name="error_name">Нужно заполнить Название</string>
+    <string name="error_bank">Нужно выбрать Банк</string>
+    <string name="error_category">Нужно выбрать Категория</string>
+    <string name="error_amount">Нужно заполнить Сумма</string>
+    <string name="error_creating_date">Нужно заполнить Дата создания</string>
 </resources>

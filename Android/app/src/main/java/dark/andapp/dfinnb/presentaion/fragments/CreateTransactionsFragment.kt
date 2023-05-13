@@ -1,6 +1,5 @@
 package dark.andapp.dfinnb.presentaion.fragments
 
-import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -13,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.FragmentCreateTransactionBinding
 import dark.andapp.dfinnb.domain.entity.NullableTransactionEntity
 import dark.andapp.dfinnb.presentaion.extensions.dateToString
@@ -108,37 +108,45 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
         }
 
         binding.cvAdd.setOnClickListener {
+            listOf(
+                binding.etBankView,
+                binding.etCategoryView,
+                binding.etAmountView,
+                binding.etCreatingDateView,
+            ).forEach {
+                it.error = null
+            }
+
             var canCreate = true
 
             if (newTransaction.bank == null) {
-                createDialog("Bank must be selected")
+                binding.etBankView.error = context.getString(R.string.error_bank)
                 canCreate = false
             }
 
             if (newTransaction.category == null) {
-                createDialog("Category must be selected")
+                binding.etCategoryView.error = context.getString(R.string.error_category)
                 canCreate = false
             }
 
             if (binding.etAmount.text.toString().isEmpty()) {
-                createDialog("Amount must be entered")
+                binding.etAmountView.error = context.getString(R.string.error_amount)
                 canCreate = false
             } else {
                 newTransaction.amount = binding.etAmount.text.toString().toDouble()
             }
 
             if (newTransaction.createdAt == null) {
-                createDialog("Creating date must be entered")
+                binding.etCreatingDateView.error = context.getString(R.string.error_creating_date)
                 canCreate = false
             }
 
             if (canCreate) {
-                newTransaction.comment = binding.etComment.text.toString()
-
-                val domainTransaction = newTransaction.toDomain()
-                createDialog(domainTransaction.toString())
-
-                transactionsViewModel.createTransaction(domainTransaction)
+                newTransaction.apply {
+                    comment = binding.etComment.text.toString()
+                }.toDomain().also {
+                    transactionsViewModel.createTransaction(it)
+                }
 
                 parentFragmentManager
                     .beginTransaction()
@@ -153,13 +161,6 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
                 .remove(this)
                 .commit()
         }
-    }
-
-    private fun createDialog(text: String) {
-        AlertDialog.Builder(context)
-            .setNeutralButton("Ok") { dialog, _ -> dialog.cancel() }
-            .setMessage(text)
-            .show()
     }
 
     override fun onDestroyView() {
