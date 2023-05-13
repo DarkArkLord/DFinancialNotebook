@@ -5,30 +5,17 @@
     android:layout_height="match_parent"
     android:background="@color/dark_dark_gray">
 
-    <ImageView
-        android:id="@+id/ivArrowBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="@dimen/back_button_start_margin"
-        android:layout_marginTop="@dimen/back_button_top_margin"
-        android:background="@drawable/arrow_right"
-        android:rotation="180"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tvCurrentBalanceTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/back_button_top_margin"
         android:text="@string/current_balance_title"
         android:textColor="@color/yellow"
         android:textSize="@dimen/text_size_header"
-        app:layout_constraintBottom_toBottomOf="@+id/ivArrowBack"
         app:layout_constraintEnd_toStartOf="@+id/tvCurrentBalance"
-        app:layout_constraintStart_toEndOf="@+id/ivArrowBack"
-        app:layout_constraintTop_toTopOf="@+id/ivArrowBack" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvCurrentBalance"
