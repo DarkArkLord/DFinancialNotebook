@@ -8,13 +8,14 @@ fun TextView.setColoredNumberRG(value: Number) {
     this.setTextColor(
         ContextCompat.getColor(
             this.context,
-            if (value.toDouble() == 0.0)
-                R.color.yellow
-            else
-                if (value.toDouble() < 0)
+            value.toDouble().let {
+                if (it == 0.0)
+                    R.color.yellow
+                else if (it < 0)
                     R.color.red
                 else
                     R.color.green
+            }
         )
     )
 
