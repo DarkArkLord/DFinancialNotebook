@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item
 import androidx.fragment.app.Fragment
@@ -46,72 +45,66 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val context = this.requireContext()
 
+        val context = requireContext()
         val newTransaction = NullableTransactionEntity()
 
         bankAccountViewModel.getAll().onEach {
-            binding.sBank.adapter = ArrayAdapter(
-                context,
-                support_simple_spinner_dropdown_item,
-                it.map { it.name }
+            binding.etBank.setAdapter(
+                ArrayAdapter(
+                    context,
+                    support_simple_spinner_dropdown_item,
+                    it.map { it.name }
+                )
             )
 
-            binding.sBank.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    newTransaction.bank = it[position]
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    newTransaction.bank = null
-                }
+            binding.etBank.setOnItemClickListener { _, _, position, _ ->
+                newTransaction.bank = it[position]
             }
         }.launchWhenStarted(lifecycleScope)
 
         categoryViewModel.getAll().onEach {
-            binding.sCategory.adapter = ArrayAdapter(
-                context,
-                support_simple_spinner_dropdown_item,
-                it.map { it.name }
+            binding.etCategory.setAdapter(
+                ArrayAdapter(
+                    context,
+                    support_simple_spinner_dropdown_item,
+                    it.map { it.name }
+                )
             )
 
-            binding.sCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    newTransaction.category = it[position]
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    newTransaction.category = null
-                }
+            binding.etCategory.setOnItemClickListener { _, _, position, _ ->
+                newTransaction.category = it[position]
             }
         }.launchWhenStarted(lifecycleScope)
 
-        binding.cvCreatingDate.setOnClickListener {
-            val todayCalendar = Calendar.getInstance()
-            DatePickerDialog(
-                context,
-                { _, year, month, day ->
-                    val calendar = Calendar.getInstance()
-                    calendar.set(Calendar.YEAR, year)
-                    calendar.set(Calendar.MONTH, month)
-                    calendar.set(Calendar.DAY_OF_MONTH, day)
-                    newTransaction.createdAt = calendar.time.time
-                    binding.tvCreatingDate.text = calendar.time.dateToString("dd MMMM yyyy")
-                },
-                todayCalendar.get(Calendar.YEAR),
-                todayCalendar.get(Calendar.MONTH),
-                todayCalendar.get(Calendar.DAY_OF_MONTH)
-            ).show()
+        binding.etCreatingDate.apply {
+            isFocusable = false
+            isClickable = true
+            isFocusableInTouchMode = false
+        }.setOnClickListener {
+            Calendar.getInstance().let {
+                DatePickerDialog(
+                    context,
+                    { _, year, month, day ->
+                        Calendar.getInstance()
+                            .apply {
+                                set(Calendar.YEAR, year)
+                                set(Calendar.MONTH, month)
+                                set(Calendar.DAY_OF_MONTH, day)
+                            }
+                            .time.also {
+                                newTransaction.createdAt = it.time
+                            }
+                            .dateToString("dd MMMM yyyy")
+                            .also {
+                                binding.etCreatingDate.setText(it)
+                            }
+                    },
+                    it.get(Calendar.YEAR),
+                    it.get(Calendar.MONTH),
+                    it.get(Calendar.DAY_OF_MONTH)
+                )
+            }.show()
         }
 
         binding.cvAdd.setOnClickListener {
@@ -127,7 +120,7 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
                 canCreate = false
             }
 
-            if (binding.etAmount.text.isEmpty()) {
+            if (binding.etAmount.text.toString().isEmpty()) {
                 createDialog("Amount must be entered")
                 canCreate = false
             } else {
@@ -163,9 +156,8 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
     }
 
     private fun createDialog(text: String) {
-        val context = this.requireContext()
         AlertDialog.Builder(context)
-            .setNeutralButton("Ok") { dialog, id -> dialog.cancel() }
+            .setNeutralButton("Ok") { dialog, _ -> dialog.cancel() }
             .setMessage(text)
             .show()
     }
