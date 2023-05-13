@@ -10,7 +10,7 @@
         android:id="@+id/tvId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/dimen_8"
         android:text="id"
         android:textColor="@color/gray"
         android:textSize="@dimen/text_size_main"
@@ -35,9 +35,7 @@
             android:id="@+id/tvBank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="@dimen/dimen_4"
             android:layout_marginBottom="5dp"
             android:text="@string/bank"
             android:textColor="@color/yellow"
@@ -47,10 +45,7 @@
             android:id="@+id/tvCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="@dimen/dimen_4"
             android:text="@string/category"
             android:textColor="@color/yellow"
             android:textSize="@dimen/text_size_main" />
@@ -76,7 +71,7 @@
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivRemove"
         app:layout_constraintStart_toEndOf="@+id/tvComment"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -84,10 +79,7 @@
             android:id="@+id/tvAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="@dimen/dimen_4"
             android:text="@string/amount"
             android:textSize="@dimen/text_size_main" />
 
@@ -95,14 +87,23 @@
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="@dimen/dimen_4"
             android:text="@string/creating_date"
             android:textColor="@color/yellow"
             android:textSize="@dimen/text_size_main" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8"
+        android:background="@drawable/red_cross"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,10 @@ class TransactionAdapter(
 
             tvAmount.setColoredNumberRG(transaction.amount)
             tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM yyyy")
+
+            ivRemove.setOnClickListener {
+                // Add removing
+            }
         }
     }
 
