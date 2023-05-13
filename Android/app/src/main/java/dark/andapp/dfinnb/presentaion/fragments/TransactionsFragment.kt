@@ -68,14 +68,6 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
                 .add(R.id.fragment_container_view, fragment)
                 .commit()
         }
-
-        binding.ivArrowBack.setOnClickListener {
-            val fragment = WelcomeFragment()
-            parentFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container_view, fragment)
-                .commit()
-        }
     }
 
     override fun onDestroyView() {
