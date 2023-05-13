@@ -47,8 +47,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="20dp"
         android:textSize="24sp"
-        android:text="$5,700"
-        android:textColor="@color/white_2"
+        android:text="123"
         app:layout_constraintTop_toBottomOf="@+id/tvCurrentBalanceTitle"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -194,6 +193,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

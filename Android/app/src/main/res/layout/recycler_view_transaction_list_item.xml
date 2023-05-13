@@ -15,87 +15,97 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:text="id"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvBank" />
-
-    <TextView
-        android:id="@+id/tvBank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:text="Bank"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvId"
-        app:layout_constraintEnd_toStartOf="@+id/tvAmount" />
-
-    <TextView
-        android:id="@+id/tvAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:text="+350"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="14sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvBank"
-        app:layout_constraintEnd_toStartOf="@+id/tvCategory" />
-
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:text="Category"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvAmount"
-        app:layout_constraintEnd_toStartOf="@+id/tvDate" />
-
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:text="Sep 3, 2013"
         android:textColor="@color/gray"
         android:textSize="14sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvCategory"
-        app:layout_constraintEnd_toStartOf="@+id/tvComment" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <LinearLayout
+        android:id="@+id/llColumn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvId"
+        app:layout_constraintEnd_toStartOf="@+id/tvComment"
+        android:orientation="vertical"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tvBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="Bank"
+            android:textColor="@color/yellow"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="Category"
+            android:textColor="@color/yellow"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Comment"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvDate"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/llColumn1"
+        app:layout_constraintEnd_toStartOf="@+id/llColumn2" />
+
+    <LinearLayout
+        android:id="@+id/llColumn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="+350"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="Sep 3, 2013"
+            android:textColor="@color/yellow"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
