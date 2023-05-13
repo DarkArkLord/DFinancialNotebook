@@ -12,6 +12,7 @@ import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.FragmentTransactionsBinding
 import dark.andapp.dfinnb.presentaion.adapters.TransactionAdapter
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
+import dark.andapp.dfinnb.presentaion.extensions.setColoredNumberRG
 import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -40,7 +41,8 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             binding.recyclerViewTransactions.adapter = TransactionAdapter(
                 transactions = it
             )
-            binding.tvCurrentBalance.text = it.sumOf { it.amount }.toString()
+            val sumOfTransactions = it.sumOf { it.amount }
+            binding.tvCurrentBalance.setColoredNumberRG(sumOfTransactions)
         }.launchWhenStarted(lifecycleScope)
 
         binding.cvBank.setOnClickListener {

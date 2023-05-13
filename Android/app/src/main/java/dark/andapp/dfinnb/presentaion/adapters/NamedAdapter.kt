@@ -2,12 +2,10 @@ package dark.andapp.dfinnb.presentaion.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.RecyclerViewNamedListItemBinding
 import dark.andapp.dfinnb.domain.entity.NamedEntity
+import dark.andapp.dfinnb.presentaion.extensions.setColoredNumberRG
 
 class NamedAdapter(
     private val entities: List<NamedEntity>
@@ -32,25 +30,7 @@ class NamedAdapter(
             tvId.text = entity.id.toString()
             tvName.text = entity.name
             tvCount.text = entity.count.toString()
-            setTextWithColor(tvAmount, entity.amount, holder)
-        }
-    }
-
-    private fun setTextWithColor(textView: TextView, value: Number, holder: ViewHolder) {
-        if (value.toDouble() < 0) {
-            textView.setTextColor(
-                ContextCompat.getColor(holder.itemView.context, R.color.red)
-            )
-        } else {
-            textView.setTextColor(
-                ContextCompat.getColor(holder.itemView.context, R.color.green)
-            )
-        }
-
-        if (value.toDouble() <= 0) {
-            textView.text = value.toString()
-        } else {
-            textView.text = "+${value}"
+            tvAmount.setColoredNumberRG(entity.amount)
         }
     }
 

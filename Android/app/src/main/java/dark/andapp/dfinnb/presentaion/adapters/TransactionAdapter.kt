@@ -2,12 +2,11 @@ package dark.andapp.dfinnb.presentaion.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import dark.andapp.dfinnb.R
 import dark.andapp.dfinnb.databinding.RecyclerViewTransactionListItemBinding
 import dark.andapp.dfinnb.domain.entity.TransactionEntity
 import dark.andapp.dfinnb.presentaion.extensions.dateToString
+import dark.andapp.dfinnb.presentaion.extensions.setColoredNumberRG
 import java.util.*
 
 class TransactionAdapter(
@@ -31,27 +30,14 @@ class TransactionAdapter(
             val transaction = transactions[position]
 
             tvId.text = transaction.id.toString()
+
             tvBank.text = transaction.bank.name
-
-            if (transaction.amount < 0) {
-                tvAmount.setTextColor(
-                    ContextCompat.getColor(holder.itemView.context, R.color.red)
-                )
-            } else {
-                tvAmount.setTextColor(
-                    ContextCompat.getColor(holder.itemView.context, R.color.green)
-                )
-            }
-
-            if (transaction.amount <= 0) {
-                tvAmount.text = transaction.amount.toString()
-            } else {
-                tvAmount.text = "+${transaction.amount}"
-            }
-
             tvCategory.text = transaction.category.name
-            tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM yyyy")
+
             tvComment.text = transaction.comment
+
+            tvAmount.setColoredNumberRG(transaction.amount)
+            tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM yyyy")
         }
     }
 
