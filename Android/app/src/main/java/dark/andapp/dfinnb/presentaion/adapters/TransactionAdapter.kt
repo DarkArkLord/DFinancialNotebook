@@ -7,10 +7,12 @@ import dark.andapp.dfinnb.databinding.RecyclerViewTransactionListItemBinding
 import dark.andapp.dfinnb.domain.entity.TransactionEntity
 import dark.andapp.dfinnb.presentaion.extensions.dateToString
 import dark.andapp.dfinnb.presentaion.extensions.setColoredNumberRG
+import dark.andapp.dfinnb.presentaion.viewmodels.TransactionsViewModel
 import java.util.*
 
 class TransactionAdapter(
-    private val transactions: List<TransactionEntity>
+    private val transactions: List<TransactionEntity>,
+    private val viewModel: TransactionsViewModel
 ) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RecyclerViewTransactionListItemBinding) :
@@ -40,7 +42,7 @@ class TransactionAdapter(
             tvDate.text = Date(transaction.createdAt).dateToString("dd MMMM yyyy")
 
             ivRemove.setOnClickListener {
-                // Add removing
+                viewModel.delete(transaction)
             }
         }
     }

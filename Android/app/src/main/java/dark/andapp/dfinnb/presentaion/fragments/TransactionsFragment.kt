@@ -39,7 +39,8 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
 
         viewModel.getAll().onEach {
             binding.recyclerViewTransactions.adapter = TransactionAdapter(
-                transactions = it
+                transactions = it,
+                viewModel = viewModel
             )
             val sumOfTransactions = it.sumOf { it.amount }
             binding.tvCurrentBalance.setColoredNumberRG(sumOfTransactions)

@@ -29,8 +29,17 @@ class TransactionsViewModel @Inject constructor(
 
     fun createTransaction(entity: TransactionEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            val entityData = entity.toData();
-            val id = db.transactionDao.insert(entityData)
+            entity.toData().also {
+                db.transactionDao.insert(it)
+            }
+        }
+    }
+
+    fun delete(entity: TransactionEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            entity.toData().also {
+                db.transactionDao.delete(it)
+            }
         }
     }
 }
