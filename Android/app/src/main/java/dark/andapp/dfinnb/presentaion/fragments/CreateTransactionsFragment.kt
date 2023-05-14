@@ -156,9 +156,10 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
         }
 
         binding.ivArrowBack.setOnClickListener {
+            val fragment = TransactionsFragment()
             parentFragmentManager
                 .beginTransaction()
-                .remove(this)
+                .replace(R.id.fragment_container_view, fragment)
                 .commit()
         }
     }

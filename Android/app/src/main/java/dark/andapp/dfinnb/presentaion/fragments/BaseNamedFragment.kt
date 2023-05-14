@@ -11,7 +11,6 @@ import dark.andapp.dfinnb.data.local.entity.INamedEntity
 import dark.andapp.dfinnb.databinding.FragmentNamedBinding
 import dark.andapp.dfinnb.domain.entity.NamedEntity
 import dark.andapp.dfinnb.presentaion.adapters.NamedAdapter
-import dark.andapp.dfinnb.presentaion.extensions.createInfoDialog
 import dark.andapp.dfinnb.presentaion.extensions.launchWhenStarted
 import dark.andapp.dfinnb.presentaion.viewmodels.BaseNamedViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -63,9 +62,10 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
         }
 
         binding.ivArrowBack.setOnClickListener {
+            val fragment = TransactionsFragment()
             parentFragmentManager
                 .beginTransaction()
-                .remove(this)
+                .replace(R.id.fragment_container_view, fragment)
                 .commit()
         }
     }

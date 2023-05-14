@@ -50,7 +50,7 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             val fragment = BankAccountFragment()
             parentFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container_view, fragment)
+                .replace(R.id.fragment_container_view, fragment)
                 .commit()
         }
 
@@ -58,7 +58,7 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             val fragment = CategoryFragment()
             parentFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container_view, fragment)
+                .replace(R.id.fragment_container_view, fragment)
                 .commit()
         }
 
@@ -66,7 +66,7 @@ class TransactionsFragment : Fragment(), CoroutineScope by MainScope() {
             val fragment = CreateTransactionsFragment()
             parentFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container_view, fragment)
+                .replace(R.id.fragment_container_view, fragment)
                 .commit()
         }
     }
