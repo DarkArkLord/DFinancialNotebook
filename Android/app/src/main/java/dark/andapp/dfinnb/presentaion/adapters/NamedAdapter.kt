@@ -37,14 +37,16 @@ class NamedAdapter<TData : INamedEntity>(
             tvAmount.setColoredNumberRG(entity.amount)
 
             ivRemove.apply {
-                background = if (entity.count < 1) {
-                    setOnClickListener {
-                        viewModel.delete(entity)
+                setImageResource(
+                    if (entity.count < 1) {
+                        setOnClickListener {
+                            viewModel.delete(entity)
+                        }
+                        R.drawable.red_cross
+                    } else {
+                        R.drawable.gray_cross
                     }
-                    context.getDrawable(R.drawable.red_cross)
-                } else {
-                    context.getDrawable(R.drawable.gray_cross)
-                }
+                )
             }
         }
     }
