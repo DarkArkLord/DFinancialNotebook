@@ -42,7 +42,8 @@ abstract class BaseNamedFragment<TData : INamedEntity> : Fragment(),
 
         getViewModel().getAll().onEach {
             binding.recyclerViewTransactions.adapter = NamedAdapter(
-                entities = it
+                entities = it,
+                viewModel = getViewModel()
             )
         }.launchWhenStarted(lifecycleScope)
 

@@ -3,12 +3,16 @@ package dark.andapp.dfinnb.presentaion.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import dark.andapp.dfinnb.R
+import dark.andapp.dfinnb.data.local.entity.INamedEntity
 import dark.andapp.dfinnb.databinding.RecyclerViewNamedListItemBinding
 import dark.andapp.dfinnb.domain.entity.NamedEntity
 import dark.andapp.dfinnb.presentaion.extensions.setColoredNumberRG
+import dark.andapp.dfinnb.presentaion.viewmodels.BaseNamedViewModel
 
-class NamedAdapter(
-    private val entities: List<NamedEntity>
+class NamedAdapter<TData : INamedEntity>(
+    private val entities: List<NamedEntity>,
+    private val viewModel: BaseNamedViewModel<TData>
 ) : RecyclerView.Adapter<NamedAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RecyclerViewNamedListItemBinding) :
@@ -31,6 +35,17 @@ class NamedAdapter(
             tvName.text = entity.name
             tvCount.text = entity.count.toString()
             tvAmount.setColoredNumberRG(entity.amount)
+
+            ivRemove.apply {
+                background = if (entity.count < 1) {
+                    setOnClickListener {
+                        viewModel.delete(entity)
+                    }
+                    context.getDrawable(R.drawable.red_cross)
+                } else {
+                    context.getDrawable(R.drawable.gray_cross)
+                }
+            }
         }
     }
 

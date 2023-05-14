@@ -30,10 +30,11 @@ abstract class BaseNamedViewModel<DataT : INamedEntity> : ViewModel() {
         }
     }
 
-    fun remove(entity: NamedEntity) {
+    fun delete(entity: NamedEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            val dataEntity = mapToData(entity)
-            getDao().delete(dataEntity)
+            mapToData(entity).also {
+                getDao().delete(it)
+            }
         }
     }
 }
