@@ -5,29 +5,39 @@
     android:layout_height="match_parent"
     android:background="@color/dark_dark_gray">
 
-    <TextView
-        android:id="@+id/tvCurrentBalanceTitle"
+    <LinearLayout
+        android:id="@+id/llHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/back_button_top_margin"
-        android:text="@string/current_balance_title"
-        android:textColor="@color/yellow"
-        android:textSize="@dimen/text_size_header"
-        app:layout_constraintEnd_toStartOf="@+id/tvCurrentBalance"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCurrentBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="123"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_header"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCurrentBalanceTitle"
+        android:background="@drawable/borders_orange"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvCurrentBalanceTitle"
-        app:layout_constraintTop_toTopOf="@+id/tvCurrentBalanceTitle" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCurrentBalanceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_8"
+            android:layout_weight="1"
+            android:text="@string/current_balance_title"
+            android:textColor="@color/yellow"
+            android:textSize="@dimen/text_size_header" />
+
+        <TextView
+            android:id="@+id/tvCurrentBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_8"
+            android:layout_weight="1"
+            android:text="123"
+            android:textSize="@dimen/text_size_header" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llButtons"
@@ -39,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/ivTransactionBlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentBalance">
+        app:layout_constraintTop_toBottomOf="@+id/llHeader">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBank"
