@@ -148,9 +148,10 @@ class CreateTransactionsFragment : Fragment(), CoroutineScope by MainScope() {
                     transactionsViewModel.createTransaction(it)
                 }
 
+                val fragment = TransactionsFragment()
                 parentFragmentManager
                     .beginTransaction()
-                    .remove(this)
+                    .replace(R.id.fragment_container_view, fragment)
                     .commit()
             }
         }
